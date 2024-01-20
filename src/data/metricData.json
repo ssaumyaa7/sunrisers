@@ -1,0 +1,44 @@
+{
+  "metricData": [
+    {
+      "id": 1,
+      "metricName": "Comfort Index",
+      "expression": "(1 - abs( avg_ch_lcw - avg_ch_design_controlPoint ) /  avg_ch_design_controlPoint)*100 "
+    },
+    {
+      "id": 2,
+      "metricName": "kW/Ton",
+      "expression": "(1.73205*(0.9)*(ch_design_LineVoltage)*(avg_CirBDriveAmps + avg_CirADriveAmps)/1000)/(((avg_ch_runstatus_analog)/100)*(ch_design_chillercapacity))"
+    },
+    {
+      "id": 3,
+      "metricName": "Load",
+      "expression": "avg_ch_runstatus_analog"
+    },
+    {
+      "id": 4,
+      "metricName": "Runtime",
+      "expression": "ch_C_Hrs"
+    },
+    {
+      "id": 5,
+      "metricName": "Entering Chilled Water Temp",
+      "expression": "avg_ch_ecw"
+    },
+    {
+      "id": 6,
+      "metricName": "leaving Chilled Water Temp",
+      "expression": "avg_ch_lcw"
+    },
+    {
+      "id": 7,
+      "metricName": "Cost of Power",
+      "expression": "avg_powerRate * (SQRT(3)*(0.9)*(ch_design_LineVoltage)*(avg_circuitRunningCurrentCirA + avg_circuitRunningCurrentCirB)/1000)/4"
+    },
+    {
+      "id": 8,
+      "metricName": "Chiller Load",
+      "expression": "avg_CH_CAP_A"
+    }
+  ]
+}
