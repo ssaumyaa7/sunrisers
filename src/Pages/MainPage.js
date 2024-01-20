@@ -3,19 +3,28 @@ import data from "../data/metricData.json";
 import Popup from "../components/Popup";
 
 const MainPage = () => {
-  const [openModal, setOpenModal] = useState(false);
-  // const [expressionJson, setExpressionJson] = useState([]);
-  const [currElement, setCurrentElement] = useState([]);
   function onCloseModal(index) {
-    // const newRow = data.filter((item) => item.index == index);
-    // newRow.expression=
     setOpenModal(false);
   }
+
+  const [openModal, setOpenModal] = useState(false);
+  const [currElement, setCurrentElement] = useState(null);
 
   const handleModelOpen = (el) => {
     setOpenModal(true);
     setCurrentElement(el);
   };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleUpdateElement = (updatedElement) => {
+    const updatedData = data.metricData.map((el) =>
+      el.id === updatedElement.id ? updatedElement : el
+    );
+  };
+
   return (
     <div>
       <div class="flex flex-col items-center justify-center w-screen min-h-screen bg-gray-900 py-10 overflow-x-hidden">
@@ -65,12 +74,14 @@ const MainPage = () => {
                             <button onClick={() => handleModelOpen(el)}>
                               Modify
                             </button>
-                            <Popup
-                              openModal={openModal}
-                              element={currElement}
-                              setOpenModal={onCloseModal}
-                              // setExpression={setExpressionJson}
-                            ></Popup>
+                            {currElement && (
+                              <Popup
+                                openModal={openModal}
+                                element={currElement}
+                                onCloseModal={handleCloseModal}
+                                onUpdateElement={handleUpdateElement}
+                              />
+                            )}
                           </td>
                         </tr>
                       );
