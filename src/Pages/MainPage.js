@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import data from "../data/metricData.json";
-import {useState} from 'react'
-import Popup from "../components/Popup"
+import { useState } from "react";
+import Popup from "../components/Popup";
 
 const MainPage = () => {
   const [openModal, setOpenModal] = useState(false);
-  cosnt [data,setData] = useState(data);
+  cosnt[(data, setData)] = useState(data);
   // function onCloseModal(index) {
   //   const newRow = data.filter((item) => item.index == index);
   //   newRow.expression=
@@ -54,10 +54,21 @@ const MainPage = () => {
                               {el.metricName}
                             </span>
                           </td>
-                          <td class="px-6 py-4 whitespace max-w-fit">{el.expression}</td>
+                          <td class="px-6 py-4 whitespace max-w-fit">
+                            {el.expression}
+                          </td>
                           <td>
-                            <button onClick={() => setOpenModal(true)}>Modify</button>
-                            <Popup index={el.index} metric={el.metricName} expression={el.expression} openModal={openModal} setOpenModal={onCloseModal} setExpression={setData}></Popup>
+                            <button onClick={() => setOpenModal(true)}>
+                              Modify
+                            </button>
+                            <Popup
+                              index={el.index}
+                              metric={el.metricName}
+                              expression={el.expression}
+                              openModal={openModal}
+                              setOpenModal={onCloseModal}
+                              setExpression={setData}
+                            ></Popup>
                           </td>
                         </tr>
                       );
