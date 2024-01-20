@@ -6,6 +6,7 @@ import React from "react";
 const Popup = ({ index, element, openModal, setOpenModal, setExpression }) => {
   const handleClose = () => setOpenModal(false);
   const handleShow = () => setOpenModal(true);
+  const [value,setValue]=useState(element.expression)
 
   return (
     <div>
@@ -19,8 +20,8 @@ const Popup = ({ index, element, openModal, setOpenModal, setExpression }) => {
             <TextInput
               id="expression"
               placeholder="expression"
-              value={element.expression}
-              onChange={(event) => setExpression(event.target.value)}
+              value={value}
+              onChange={(event) => setValue(event.target.value)}
               required
             />
           </div>
