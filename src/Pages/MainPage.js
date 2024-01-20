@@ -9,6 +9,7 @@ const MainPage = () => {
 
   const [openModal, setOpenModal] = useState(false);
   const [currElement, setCurrentElement] = useState(null);
+  const [updateList, setUpdateList] = useState(data.metricData);
 
   const handleModelOpen = (el) => {
     setOpenModal(true);
@@ -23,6 +24,7 @@ const MainPage = () => {
     const updatedData = data.metricData.map((el) =>
       el.id === updatedElement.id ? updatedElement : el
     );
+    setUpdateList(updatedData);
   };
 
   return (
@@ -58,7 +60,7 @@ const MainPage = () => {
                     </tr>
                   </thead>
                   <tbody class="bg-gray-800">
-                    {data.metricData.map((el) => {
+                    {updateList.map((el) => {
                       return (
                         <tr class="bg-black bg-opacity-20">
                           <td class="pl-4">{el.id}</td>
