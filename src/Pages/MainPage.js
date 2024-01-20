@@ -4,7 +4,7 @@ import Popup from "../components/Popup";
 
 const MainPage = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [expressionJson, setExpressionJson] = useState([]);
+  // const [expressionJson, setExpressionJson] = useState([]);
   const [currElement, setCurrentElement] = useState([]);
   function onCloseModal(index) {
     // const newRow = data.filter((item) => item.index == index);
@@ -69,7 +69,7 @@ const MainPage = () => {
                               openModal={openModal}
                               element={currElement}
                               setOpenModal={onCloseModal}
-                              setExpression={setExpressionJson}
+                              // setExpression={setExpressionJson}
                             ></Popup>
                           </td>
                         </tr>
