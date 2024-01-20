@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import data from "../data/metricData.json";
-import { useState } from "react";
 import Popup from "../components/Popup";
 
 const MainPage = () => {
   const [openModal, setOpenModal] = useState(false);
-  cosnt[(data, setData)] = useState(data);
-  // function onCloseModal(index) {
-  //   const newRow = data.filter((item) => item.index == index);
-  //   newRow.expression=
-  //   setOpenModal(false);
-  // }
+  const [expressionJson, setExpressionJson] = useState([]);
+  function onCloseModal(index) {
+    // const newRow = data.filter((item) => item.index == index);
+    // newRow.expression=
+    setOpenModal(false);
+  }
 
   return (
     <div>
@@ -67,7 +66,7 @@ const MainPage = () => {
                               expression={el.expression}
                               openModal={openModal}
                               setOpenModal={onCloseModal}
-                              setExpression={setData}
+                              setExpression={setExpressionJson}
                             ></Popup>
                           </td>
                         </tr>
