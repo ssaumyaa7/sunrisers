@@ -1,7 +1,17 @@
 import React from "react";
 import data from "../data/metricData.json";
+import {useState} from 'react'
+import Popup from "../components/Popup"
 
 const MainPage = () => {
+  const [openModal, setOpenModal] = useState(false);
+  cosnt [data,setData] = useState(data);
+  // function onCloseModal(index) {
+  //   const newRow = data.filter((item) => item.index == index);
+  //   newRow.expression=
+  //   setOpenModal(false);
+  // }
+
   return (
     <div>
       <div class="flex flex-col items-center justify-center w-screen min-h-screen bg-gray-900 py-10 overflow-x-hidden">
@@ -46,7 +56,8 @@ const MainPage = () => {
                           </td>
                           <td class="px-6 py-4 whitespace max-w-fit">{el.expression}</td>
                           <td>
-                            <button>Modify</button>
+                            <button onClick={() => setOpenModal(true)}>Modify</button>
+                            <Popup index={el.index} metric={el.metricName} expression={el.expression} openModal={openModal} setOpenModal={onCloseModal} setExpression={setData}></Popup>
                           </td>
                         </tr>
                       );
