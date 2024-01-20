@@ -5,12 +5,17 @@ import Popup from "../components/Popup";
 const MainPage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [expressionJson, setExpressionJson] = useState([]);
+  const [currElement, setCurrentElement] = useState([]);
   function onCloseModal(index) {
     // const newRow = data.filter((item) => item.index == index);
     // newRow.expression=
     setOpenModal(false);
   }
 
+  const handleModelOpen = (el) => {
+    setOpenModal(true);
+    setCurrentElement(el);
+  };
   return (
     <div>
       <div class="flex flex-col items-center justify-center w-screen min-h-screen bg-gray-900 py-10 overflow-x-hidden">
@@ -57,14 +62,12 @@ const MainPage = () => {
                             {el.expression}
                           </td>
                           <td>
-                            <button onClick={() => setOpenModal(true)}>
+                            <button onClick={() => handleModelOpen(el)}>
                               Modify
                             </button>
                             <Popup
-                              index={el.index}
-                              metric={el.metricName}
-                              expression={el.expression}
                               openModal={openModal}
+                              element={currElement}
                               setOpenModal={onCloseModal}
                               setExpression={setExpressionJson}
                             ></Popup>
